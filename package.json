@@ -4,29 +4,30 @@
    "author": "T1xx1",
    "license": "MIT",
    "keywords": [
+      "components",
       "library",
-      "react"
+      "react",
+      "utils"
+   ],
+   "main": "dist/index.js",
+   "module": "dist/reactyio.esm.js",
+   "typings": "dist/index.d.ts",
+   "files": [
+      "dist",
+      "changelog.md"
    ],
    "scripts": {
       "start": "tsdx watch",
       "build": "tsdx build",
       "prepare": "tsdx build",
       "size": "size-limit",
-      "analyze": "size-limit --why",
-      "publish": "np --branch master"
+      "analyze": "size-limit --why"
    },
-   "main": "dist/index.js",
-   "module": "dist/reactyio.esm.js",
-   "typings": "dist/index.d.ts",
-   "files": [
-      "dist",
-      "src"
-   ],
    "engines": {
       "node": ">=10"
    },
    "peerDependencies": {
-      "react": ">=16"
+      "react": ">=18.2.0"
    },
    "devDependencies": {
       "@size-limit/preset-small-lib": "^8.1.0",
@@ -38,7 +39,7 @@
       "size-limit": "^8.1.0",
       "tsdx": "^0.14.1",
       "tslib": "^2.4.0",
-      "typescript": "^3.9.10"
+      "typescript": "^4.8.4"
    },
    "size-limit": [
       {

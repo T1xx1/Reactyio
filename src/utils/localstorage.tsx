@@ -36,13 +36,15 @@ export class LocalStorage {
 
                if (retur) state = retur;
 
-               if (v < version) localStorage.removeItem(k);
-               if (v === version) {
-                  this.write(state);
-               } else localStorage.setItem(Id(++v), JSON.stringify(state));
+               if (v < version) {
+                  localStorage.removeItem(k);
+                  localStorage.setItem(Id(++v), JSON.stringify(state));
+               }
+               if (v === version) this.write(state);
             }
          });
 
+      this.read();
       this.init();
    }
 
@@ -60,8 +62,6 @@ export class LocalStorage {
       this.write(this.value ?? this.initial);
    }
    reset() {
-      this.value = this.initial;
-
-      this.write();
+      this.write(this.initial);
    }
 }
