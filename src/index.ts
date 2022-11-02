@@ -1,1 +1,1 @@
-export * from './utils/index';
+export * as utils from './utils/index';

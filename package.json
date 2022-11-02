@@ -1,6 +1,6 @@
 {
    "name": "reactyio",
-   "version": "1.0.2",
+   "version": "1.0.3",
    "author": "T1xx1",
    "license": "MIT",
    "keywords": [
@@ -19,7 +19,6 @@
    "scripts": {
       "start": "tsdx watch",
       "build": "tsdx build",
-      "prepare": "tsdx build",
       "size": "size-limit",
       "analyze": "size-limit --why"
    },

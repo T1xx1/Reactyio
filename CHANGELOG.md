@@ -7,12 +7,18 @@
 <details>
    <summary>Versions</summary>
 
--  [0.1.0](#010)
+-  [1.0.2](#102)
    </details>
 
 <br>
 
-## 0.1.0
+## 1.0.3
+
+### Fixed
+
+-  Null after LocalStorage init
+
+## 1.0.2
 
 ### Added
 

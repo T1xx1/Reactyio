@@ -44,8 +44,8 @@ export class LocalStorage {
             }
          });
 
-      this.read();
       this.init();
+      this.read();
    }
 
    del() {
