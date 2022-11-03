@@ -6,7 +6,7 @@ export class LocalStorage {
 
    initial: object;
 
-   value: object | null | undefined;
+   value: object | null;
 
    constructor(name: string, version = 0, initial = {}, ...functions: Function[]) {
       this.name = name;
@@ -44,23 +44,18 @@ export class LocalStorage {
             }
          });
 
-      this.init();
-      this.read();
+      this.value = JSON.parse(localStorage.getItem(this.id) ?? 'null');
+
+      this.write(this.value ?? this.initial);
    }
 
    del() {
       localStorage.removeItem(this.id);
    }
-   read() {
-      this.value = JSON.parse(localStorage.getItem(this.id) ?? 'null');
-   }
-   write(obj: object | null | undefined = this.value) {
+   write(obj: object | null = this.value) {
       localStorage.setItem(this.id, JSON.stringify(obj));
    }
 
-   init() {
-      this.write(this.value ?? this.initial);
-   }
    reset() {
       this.write(this.initial);
    }

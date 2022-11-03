@@ -12,11 +12,17 @@
 
 <br>
 
-## 1.0.3
+## 1.0.5
+
+### Added
+
+-  Components
+
+## 1.0.4 / 1.0.3
 
 ### Fixed
 
--  Null after LocalStorage init
+-  Storage value null after LocalStorage init
 
 ## 1.0.2
 
