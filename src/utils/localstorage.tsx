@@ -1,59 +1,56 @@
+let _f = {
+   del: (k: string) => localStorage.removeItem(k),
+   read: (k: string): object => JSON.parse(localStorage.getItem(k) ?? 'null'),
+   write: (k: string, obj: object | null) => localStorage.setItem(k, JSON.stringify(obj)),
+};
+
 export class LocalStorage {
-   name: string;
-   version: number;
+   initial: object;
 
    id: string;
 
-   initial: object;
-
-   value: object | null;
+   value: object | null = null;
 
    constructor(name: string, version = 0, initial = {}, ...functions: Function[]) {
-      this.name = name;
-      this.version = version;
-
       this.initial = initial;
 
-      let Id = (v: number) => `${this.name} ${v}`;
+      let Id = (v = version) => `${name} ${v}`;
 
-      this.id = Id(this.version);
+      this.id = Id(version);
 
-      for (let f of functions)
-         f((v: number, cb: Function = () => {}) => {
-            try {
-               if (!v) throw null;
-               if (v > version) throw null;
-            } catch {
-               return;
+      this.read();
+
+      const upgrade = (v: number, cb: (state: object) => {}): void => {
+         try {
+            if (v > version) return;
+         } catch {}
+
+         let k = Id(v);
+
+         if (k in localStorage) {
+            let r = cb(_f.read(k));
+
+            if (v < version) {
+               _f.del(k);
+               this.write(r);
             }
+            if (v === version) this.write(r);
+         }
+      };
 
-            let k = Id(v);
+      for (let f of functions) f(upgrade);
 
-            if (k in localStorage) {
-               let state = JSON.parse(localStorage.getItem(k) ?? 'null');
-
-               let retur = cb(state);
-
-               if (retur) state = retur;
-
-               if (v < version) {
-                  localStorage.removeItem(k);
-                  localStorage.setItem(Id(++v), JSON.stringify(state));
-               }
-               if (v === version) this.write(state);
-            }
-         });
-
-      this.value = JSON.parse(localStorage.getItem(this.id) ?? 'null');
-
-      this.write(this.value ?? this.initial);
+      this.write();
    }
 
    del() {
-      localStorage.removeItem(this.id);
+      _f.del(this.id);
    }
-   write(obj: object | null = this.value) {
-      localStorage.setItem(this.id, JSON.stringify(obj));
+   read() {
+      this.value = _f.read(this.id);
+   }
+   write(obj = this.value) {
+      _f.write(this.id, obj ?? this.initial);
    }
 
    reset() {

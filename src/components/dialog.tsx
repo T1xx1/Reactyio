@@ -1,26 +1,34 @@
-import React, { ReactElement } from 'react';
+import React, { useState } from 'react';
 
-interface Dialog {
+export function Dialog({
+   id,
+   trigger,
+   open,
+   title,
+   children,
+   ...attrs
+}: {
+   children: JSX.Element;
    id: string;
+   open: boolean;
    title: string;
-   trigger: ReactElement;
-   children: ReactElement;
-}
+   trigger: JSX.Element;
+}) {
+   let [o, setOpen] = useState(open);
 
-export default function Dialog({ id, title, trigger, children }: Dialog) {
-   let s = () => document.querySelector(`#${id}.dialog`);
+   let openClose = () => setOpen((old: boolean) => !old);
 
    return (
-      <div id={id} className='dialog'>
-         <div className='trigger' onClick={() => s()?.showModal()}>
+      <div id={id} className='dialog' {...attrs}>
+         <div className='trigger' onClick={() => openClose()}>
             {trigger}
          </div>
-         <dialog>
-            <div>
+         <dialog open={o}>
+            <div className='header'>
                <h1>{title}</h1>
-               <img src='https://img.icons8.com/emoji/96/FAB005/cross-mark-emoji.png' alt='Close' onClick={() => s()?.close()} />
+               <img src='https://img.icons8.com/emoji/96/FAB005/cross-mark-emoji.png' alt='Close' onClick={() => openClose()} />
             </div>
-            <div>{children}</div>
+            <div className='children'>{children}</div>
          </dialog>
       </div>
    );

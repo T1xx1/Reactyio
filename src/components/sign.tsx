@@ -1,12 +1,8 @@
 import React from 'react';
 
-interface Sign {
-   username: string;
-}
-
-export default function Sing({ username }: Sign) {
+export function Sign({ username, ...attrs }: { username: string }) {
    return (
-      <span>
+      <span className='sign' {...attrs}>
          Built by <a href={`https://github.com/${username}`}>{username}</a>
       </span>
    );
