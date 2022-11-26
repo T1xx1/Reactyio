@@ -37,5 +37,5 @@ function recursive(obj: any) {
 }
 
 export function JsonToHTML(obj: any) {
-   return <code className='jsontohtml'>{recursive(obj)}</code>;
+   return <code id='jsontohtml'>{recursive(obj)}</code>;
 }

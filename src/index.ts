@@ -1,5 +1,5 @@
+export * from './components/_index';
+
+export * from './compounds/_index';
+
 export * as utils from './utils/_index';
-
-export * as components from './components/_index';
-
-export * as compounds from './compounds/_index';

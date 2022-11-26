@@ -1,9 +1,9 @@
 import React from 'react';
 
-export function Sign({ username, ...attrs }: { username: string }) {
+export function Sign({ user, ...attrs }: { user: string }) {
    return (
-      <span className='sign' {...attrs}>
-         Built by <a href={`https://github.com/${username}`}>{username}</a>
+      <span id='sign' {...attrs}>
+         Built by <a href={`https://github.com/${user}`}>{user}</a>
       </span>
    );
 }

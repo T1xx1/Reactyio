@@ -7,12 +7,31 @@
 <details>
    <summary>Versions</summary>
 
+-  [1.2.0](#120)
 -  [1.1.0](#110-•-components-•-2022-11-05)
 -  [1.0.2](#102)
 
    </details>
 
 <br>
+
+## 1.2.1
+
+### Fixed
+
+-  ImgButton img loading
+
+## 1.2.0
+
+### Added
+
+-  Download util
+
+## 1.1.1 • 2022-11-13
+
+### Fixed
+
+-  Value = null after new LocalStorage() init
 
 ## 1.1.0 • Components • 2022-11-05
 
@@ -29,18 +48,11 @@
    -  ImgButton
 -  Download util
 
-## 1.0.5 / 1.0.4 / 1.0.3
-
-### Fixed
-
--  Storage value = null after new LocalStorage()
-
-## 1.0.2
+## 1.0.5 - 1.0.2
 
 ### Added
 
 -  LocalStorage util
-
 
 ## 0.0.1 • Reactyio
 
