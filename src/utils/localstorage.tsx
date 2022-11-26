@@ -1,7 +1,7 @@
 let _f = {
-   del: (k: string) => localStorage.removeItem(k),
-   read: (k: string): object => JSON.parse(localStorage.getItem(k) ?? 'null'),
-   write: (k: string, obj: object | null) => localStorage.setItem(k, JSON.stringify(obj)),
+   d: (k: string) => localStorage.removeItem(k),
+   r: (k: string): object => JSON.parse(localStorage.getItem(k) ?? 'null'),
+   w: (k: string, obj: object | null) => localStorage.setItem(k, JSON.stringify(obj)),
 };
 
 export class LocalStorage {
@@ -14,27 +14,23 @@ export class LocalStorage {
    constructor(name: string, version = 0, initial = {}, ...functions: Function[]) {
       this.initial = initial;
 
-      let Id = (v = version) => `${name} ${v}`;
+      let id = (v = version) => `${name} ${v}`;
 
-      this.id = Id(version);
+      this.id = id(version);
 
       this.read();
 
-      const upgrade = (v: number, cb: (state: object) => {}): void => {
-         try {
-            if (v > version) return;
-         } catch {}
+      const upgrade = (v: number, cb: (state: object) => {}) => {
+         if (v > version) return;
 
-         let k = Id(v);
+         let k = id(v);
 
          if (k in localStorage) {
-            let r = cb(_f.read(k));
+            let r = cb(_f.r(k));
 
-            if (v < version) {
-               _f.del(k);
-               this.write(r);
-            }
-            if (v === version) this.write(r);
+            if (v < version) _f.d(k);
+
+            this.write(r);
          }
       };
 
@@ -44,16 +40,14 @@ export class LocalStorage {
    }
 
    del() {
-      _f.del(this.id);
+      _f.d(this.id);
    }
    read() {
-      this.value = _f.read(this.id);
+      this.value = _f.r(this.id);
    }
    write(obj = this.value) {
-      _f.write(this.id, obj ?? this.initial);
-   }
+      this.value = this.value ?? this.initial;
 
-   reset() {
-      this.write(this.initial);
+      _f.w(this.id, obj);
    }
 }
