@@ -7,6 +7,7 @@
 <details>
    <summary>Versions</summary>
 
+-  [1.3.0](#130-•-2022-11-30)
 -  [1.2.0](#120)
 -  [1.1.0](#110-•-components-•-2022-11-05)
 -  [1.0.2](#102)
@@ -14,6 +15,20 @@
    </details>
 
 <br>
+
+## 1.3.0 • Functions • 2022-11-30
+
+### Added
+
+-  Functions
+
+### Changed
+
+-  Moved functions from components
+
+### Fixed
+
+-  ImgButton click attr called on loading
 
 ## 1.2.3 - 1.2.1 • 2022-11-26
 
