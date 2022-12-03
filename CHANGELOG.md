@@ -16,6 +16,12 @@
 
 <br>
 
+## 1.3.1 • 2022-12-03
+
+### Fixed
+
+-  ImgButton doesn't load the image
+
 ## 1.3.0 • Functions • 2022-11-30
 
 ### Added
