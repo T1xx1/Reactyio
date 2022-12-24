@@ -11,12 +11,15 @@
 -  [1.2.0](#120)
 -  [1.1.0](#110-•-components-•-2022-11-05)
 -  [1.0.2](#102)
-
    </details>
 
 <br>
 
 ## 1.3.2
+
+## Changes
+
+-  Dialog close button as ImgButton
 
 ## Fixed
 
