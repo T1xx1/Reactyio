@@ -16,6 +16,12 @@
 
 <br>
 
+## 1.3.2
+
+## Fixed
+
+-  Snackbar won't delete all nodes in the parent node
+
 ## 1.3.1 • 2022-12-03
 
 ### Fixed
